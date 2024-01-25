@@ -1,4 +1,4 @@
-//Alejandro Castro Arevalo
+//Alejandro Castro Arévalo
 package excersise1;
 
 import java.util.Scanner;
