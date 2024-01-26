@@ -1,6 +1,7 @@
 //Alejandro Castro Arévalo
 package excersise1;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BasicCalculator implements Operation {
@@ -10,6 +11,7 @@ public class BasicCalculator implements Operation {
 	
 	public void menu(Scanner scanner) {
 		
+		int option = 0;
 		float[] values = new float[2];
 		
 		do {
@@ -17,8 +19,17 @@ public class BasicCalculator implements Operation {
 					+ "3.- Multiply (a x b)\n4.- Divide (a / b)\n5.- Exit.");
 			
 			System.out.print("Option: ");
-			int option = scanner.nextInt();
-			scanner.nextLine(); //Blank input so scanner consumes newline
+			
+			while (true) {
+				try {
+					option = scanner.nextInt();
+					scanner.nextLine(); 
+					break;
+				} catch (InputMismatchException e) {
+					System.out.println("Invalid Input, enter an integer: ");
+					scanner.nextLine();
+				}
+			}
 			
 			if (option == 1) {
 				System.out.println("Sum");
@@ -60,20 +71,50 @@ public class BasicCalculator implements Operation {
 	
 	public float[] getInput(Scanner scanner, int option) {
 		float[] inputs = {0,0};
+		
 		System.out.println("Insert value a:");
-		inputs[0] = scanner.nextFloat();
-		scanner.nextLine();
+		
+		while (true) {
+			try {
+				inputs[0] = scanner.nextFloat();
+				scanner.nextLine();
+				break;
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid Input, enter an number: ");
+				scanner.nextLine();
+			}
+		}
 		
 		if (option == 4) {
 			do {
+				
 				System.out.println("Insert value b:");
-				inputs[1] = scanner.nextFloat();
-				scanner.nextLine();
+				
+				while (true) {
+					try {
+						inputs[1] = scanner.nextFloat();
+						scanner.nextLine();
+						break;
+					} catch (InputMismatchException e) {
+						System.out.println("Invalid Input, enter an number: ");
+						scanner.nextLine();
+					}
+				}
+				
 			} while (inputs[1] == 0);
-		}else {
+		} else {
 			System.out.println("Insert value b:");
-			inputs[1] = scanner.nextFloat();
-			scanner.nextLine();
+			
+			while (true) {
+				try {
+					inputs[1] = scanner.nextFloat();
+					scanner.nextLine();
+					break;
+				} catch (InputMismatchException e) {
+					System.out.println("Invalid Input, enter an number: ");
+					scanner.nextLine();
+				}
+			}
 		}
 		
 		return inputs;

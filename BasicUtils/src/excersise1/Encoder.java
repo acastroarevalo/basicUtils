@@ -2,6 +2,7 @@
 package excersise1;
 
 import java.util.Base64;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Encoder {
@@ -10,14 +11,26 @@ public class Encoder {
 	}
 	
 	public void menu(Scanner scanner) {
+		
+		int option = 0;
+		
 		do {
 			System.out.println("Please choose an option: \n1.- Encode a String to Base64.\n"
 					+ "2.- Decode a String to Base64.\n"
 					+ "3.- Exit.");
 			
 			System.out.print("Option: ");
-			int option = scanner.nextInt();
-			scanner.nextLine(); //Blank input so scanner consumes newline
+			
+			while (true) {
+				try {
+					option = scanner.nextInt();
+					scanner.nextLine();
+					break;
+				} catch (InputMismatchException e) {
+					System.out.println("Invalid Input, enter an integer: ");
+					scanner.nextLine();
+				}
+			}
 			
 			if (option == 1) {
 				System.out.println("Encode");

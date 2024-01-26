@@ -1,6 +1,7 @@
 //Alejandro Castro Arévalo
 package excersise1;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -8,13 +9,25 @@ public class Main {
 	static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
+		
+		int option = 0;
+		
 		do {
 			System.out.println("Please choose an option: \n1.- Basic Calculator.\n2.- Encoder\n"
 					+ "3.- Student Average Calculator.\n4.- Exit.");
 			
 			System.out.print("Option: ");
-			int option = scanner.nextInt();
-			scanner.nextLine(); //Blank input so scanner consumes newline
+			
+			while (true) {
+				try {
+					option = scanner.nextInt();
+					scanner.nextLine(); //Blank input so scanner consumes newline
+					break;
+				} catch (InputMismatchException e) {
+					System.out.println("Invalid Input, enter an integer: ");
+					scanner.nextLine();
+				}
+			}
 			
 			if (option == 1) {
 				System.out.println("Calculator");
