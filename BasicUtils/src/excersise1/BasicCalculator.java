@@ -4,7 +4,7 @@ package excersise1;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class BasicCalculator implements Operation {
+public class BasicCalculator  {
 	
 	public BasicCalculator() {
 	}
@@ -119,12 +119,5 @@ public class BasicCalculator implements Operation {
 		
 		return inputs;
 	}
-
-	@Override
-	public void calculate(float[] values) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 }
